@@ -106,7 +106,7 @@ split{
 			return true;
 		}
 	}else if(vars.getSplit(6)){
-		if(vars.getLoc("MIOTLY")&&vars.getMini(vars.miotFile)>1){
+		if(vars.getLoc("MIOTLY")&&(vars.getMini(vars.miotFile)==2||vars.getMini(vars.miotFile)==4)){
 			vars.prog++;
 			return true;
 		}
@@ -116,7 +116,7 @@ split{
 			return true;
 		}
 	}else if(vars.getSplit(8)){
-		if(vars.getLoc("MIOTLY")){
+		if(vars.getLoc("MIOTLY")&&(vars.getMini(vars.miotFile)==2||vars.getMini(vars.miotFile)==4)){
 			vars.prog++;
 			return true;
 		}
