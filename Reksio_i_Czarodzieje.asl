@@ -4,8 +4,8 @@ startup{
 	refreshRate = 15;
 	
 	settings.Add("inSplitter",false);
+	settings.SetToolTip("inSplitter","If unchecked, splitter is synchronized with splits in LiveSplit, otherwise autosplitter uses own split counter, allowing for additional manual splits.");
 	settings.Add("checkStart",true);
-	
 }
 
 init{
