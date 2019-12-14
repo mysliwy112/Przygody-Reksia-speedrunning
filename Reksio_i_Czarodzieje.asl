@@ -10,6 +10,7 @@ startup{
 
 init{
 	
+	//checks Reksio's location
 	Func<string,bool> getLoc = name=>{
 		byte[] buffer=new byte[name.Length];
 		vars.gameFile.Seek(12,SeekOrigin.Begin);
@@ -20,6 +21,9 @@ init{
 			return false;
 		}
 	};
+	vars.getLoc=getLoc;
+	
+	//checks which wizard's testimony player aleady have
 	Func<int,bool> getCzar = position=>{
 		byte[] czarodziej=new byte[1];
 		vars.invFile.Seek(position*8+8,SeekOrigin.Begin);
@@ -30,12 +34,18 @@ init{
 			return false;
 		}
 	};
+	vars.getCzar=getCzar;
+	
+	//checks for one-byte value in arr file
 	Func<FileStream, int> getMini= file =>{
 		byte[] byt=new byte[1];
 		file.Seek(8,SeekOrigin.Begin);
 		file.Read(byt,0,1);
 		return byt[0];
 	};
+	vars.getMini=getMini;
+
+
 	Func<int,bool> getSplit = pos=>{
 		if((settings["inSplitter"]==true&&vars.prog==pos)||(settings["inSplitter"]==false&&timer.CurrentSplitIndex==pos)){
 			return true;
@@ -43,10 +53,11 @@ init{
 			return false;
 		}
 	};
-	vars.getLoc=getLoc;
-	vars.getCzar=getCzar;
 	vars.getSplit=getSplit;
-	vars.getMini=getMini;
+	
+	
+	
+	
 	
 	var page = modules.First();
 	var gameDir = Path.GetDirectoryName(page.FileName);
