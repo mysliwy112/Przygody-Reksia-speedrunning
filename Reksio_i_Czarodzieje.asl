@@ -55,26 +55,10 @@ init{
 	
 	
 	
-	try{
-		vars.gameFile=new FileStream(vars.saveDir+"GAME0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-	}catch{
-		print("Can't open: "+vars.saveDir+"GAME0.ARR");
-	}
-	try{
-		vars.invFile=new FileStream(vars.saveDir+"INVEST0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-	}catch{
-		print("Can't open: "+vars.saveDir+"INVEST0.ARR");
-	}
-	try{
-		vars.miotFile=new FileStream(vars.saveDir+"MIOTLY0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-	}catch{
-		print("Can't open: "+vars.saveDir+"MIOTLY0.ARR");
-	}
-	try{
-		vars.shootFile=new FileStream(vars.saveDir+"SHOOTER0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-	}catch{
-		print("Can't open: "+vars.saveDir+"SHOOTER0.ARR");
-	}
+	vars.gameFile=new FileStream(vars.saveDir+"GAME0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+	vars.invFile=new FileStream(vars.saveDir+"INVEST0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+	vars.miotFile=new FileStream(vars.saveDir+"MIOTLY0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+	vars.shootFile=new FileStream(vars.saveDir+"SHOOTER0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	
 	vars.prog=0;
 	vars.starter=settings["starter"];
@@ -142,7 +126,7 @@ split{
 			return true;
 		}
 	}else if(vars.getSplit(10)){
-		if(vars.getLoc("SHOOTER")&&vars.getMini(vars.shootFile)==3){
+		if(vars.getLoc("SHOOTER")&&vars.getMini(vars.shootFile)==2){
 			vars.prog++;
 			return true;
 		}
