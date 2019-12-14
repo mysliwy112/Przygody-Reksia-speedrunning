@@ -23,8 +23,8 @@ init{
 	};
 	vars.getLoc=getLoc;
 	
-	//checks which wizard's testimony player aleady have
-	Func<int,bool> getCzar = position=>{
+	//checks if player already got wizard's testimony
+	Func<int,bool> getWiz = position=>{
 		byte[] czarodziej=new byte[1];
 		vars.invFile.Seek(position*8+8,SeekOrigin.Begin);
 		vars.invFile.Read(czarodziej,0,1);
@@ -34,7 +34,7 @@ init{
 			return false;
 		}
 	};
-	vars.getCzar=getCzar;
+	vars.getWiz=getWiz;
 	
 	//checks for one-byte value in arr file
 	Func<FileStream, int> getMini= file =>{
@@ -44,7 +44,6 @@ init{
 		return byt[0];
 	};
 	vars.getMini=getMini;
-
 
 	Func<int,bool> getSplit = pos=>{
 		if((settings["inSplitter"]==true&&vars.prog==pos)||(settings["inSplitter"]==false&&timer.CurrentSplitIndex==pos)){
@@ -56,24 +55,18 @@ init{
 	vars.getSplit=getSplit;
 	
 	
-	
-	
-	
 	var page = modules.First();
 	var gameDir = Path.GetDirectoryName(page.FileName);
 	vars.saveDir=gameDir+"\\Common\\";
-	//vars.saveDir="E:\\AidemMedia\\Reksio i Czarodzieje\\Common\\";
-	
-	
 	
 	vars.gameFile=new FileStream(vars.saveDir+"GAME0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	vars.invFile=new FileStream(vars.saveDir+"INVEST0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	vars.miotFile=new FileStream(vars.saveDir+"MIOTLY0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	vars.shootFile=new FileStream(vars.saveDir+"SHOOTER0.ARR", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 	
+	
 	vars.prog=0;
 	vars.starter=settings["starter"];
-	
 }
 
 start{
@@ -112,7 +105,7 @@ split{
 			return true;
 		}
 	}else if(vars.getSplit(5)){
-		if(vars.getCzar(4)){
+		if(vars.getWiz(4)){
 			vars.prog++;
 			return true;
 		}
@@ -122,7 +115,7 @@ split{
 			return true;
 		}
 	}else if(vars.getSplit(7)){
-		if(vars.getCzar(5)||vars.getCzar(6)){
+		if(vars.getWiz(5)||vars.getWiz(6)){
 			vars.prog++;
 			return true;
 		}
@@ -132,7 +125,7 @@ split{
 			return true;
 		}
 	}else if(vars.getSplit(9)){
-		if(vars.getCzar(5)&&vars.getCzar(6)){
+		if(vars.getWiz(5)&&vars.getWiz(6)){
 			vars.prog++;
 			return true;
 		}
