@@ -77,9 +77,6 @@ init{
 	vars.idSpielmauster=4;
 	vars.idChrumburak=5;
 	vars.idBarandalf=6;
-	
-	
-
 }
 
 start{
