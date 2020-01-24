@@ -116,7 +116,7 @@ split{
 			break;
 
 		case 5:
-			if(vars.getWiz(vars.Spielmauster))
+			if(vars.getWiz(vars.idSpielmauster))
 				return true;
 			break;
 	}
