@@ -79,39 +79,32 @@ init{
 	vars.idBarandalf=6;
 }
 
-start{
-	//modify
-	if(vars.getLoc("NOPE")){
-		return true;
-	}
-}
-
 split{
 	int curr=vars.getSplit();
 	switch (curr)
 	{
 		case 0:
-			if(vars.getLoc("TELEP_PODWORKO"))
+			if(vars.getLoc("PIKLIBIA"))
 				return true;
 			break;
 			
 		case 1:
-			if(vars.getLoc("GABINETDYR"))
+			if(vars.getLoc("DOMSPIEL"))
 				return true;
 			break;
 
 		case 2:
-			if(vars.getLoc("MIOTSHOP"))
+			if(vars.getLoc("PIKLIBIA"))
 				return true;
 			break;
 
 		case 3:
-			if(vars.getLoc("SHOOTER"))
+			if(vars.getLoc("LABIRYNT"))
 				return true;
 			break;
 
 		case 4:
-			if(vars.getLoc("MIOTLY"))
+			if(vars.getLoc("DOMSPIEL"))
 				return true;
 			break;
 
