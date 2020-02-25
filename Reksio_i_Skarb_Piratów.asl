@@ -1,5 +1,6 @@
 state("ReksioPiraci"){
-	string20 stage : "ReksioPiraci.exe", 0x00010014,0x4,0xC8,0x100,0x164,0x1E0;
+	string20 stage : "ReksioPiraci.exe", 0x00010014,0x4C,0x334,0x0,0x88,0x208;
+	string20 stage2 : "PIKLIB8.dll", 0x00030708,0x1B0,0x4C,0xEC,0x30,0x0;
 }
 
 startup{
@@ -9,7 +10,6 @@ startup{
 init{
 	
 	Func<string,bool> getLoc = name=>{
-		print(current.stage);
 		try{
 			if(string.Compare(name,0,current.stage,0,name.Length)==0){
 				return true;
@@ -17,7 +17,13 @@ init{
 				return false;
 			}
 		}catch(Exception e){
+			if(string.Compare(name,0,current.stage2,0,name.Length)==0){
+				return true;
+			}else{
+				return false;
+			}
 			print(current.stage);
+			print(current.stage2);
 			return false;
 		}
 	};
